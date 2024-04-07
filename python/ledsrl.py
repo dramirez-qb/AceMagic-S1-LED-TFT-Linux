@@ -30,7 +30,10 @@ import logging
 # ---------------------------------------------------------------------------
 date_stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M%S")
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename=f'led_srl_{date_stamp}.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig( encoding='utf-8', level=logging.DEBUG,     handlers=[
+        logging.FileHandler(f'led_srl_{date_stamp}.log'),
+        logging.StreamHandler()
+    ])
 # ---------------------------------------------------------------------------
 
 
@@ -104,60 +107,6 @@ def probe_led_interface():
             logger.error(f"Device not Detected")
     return (dev_name)
 
-# ---------------------------------------------------------------------------
-def rest_of_the_process():
-    '''
-    Intial test code that is no longer used . Deprecated !
-    '''
-    s = serial.Serial('/dev/ttyUSB0', timeout=10,baudrate=10000)
-    data_to_write = b"\xfa\x04\x01\x01\x00"
-
-    logger.debug(s)
-    try:
-        s.open()    
-    except:
-        pass
-
-    logger.debug(s.writable())
-
-    data_off   = [b'\xfa', b'\x04' , b'\x03' , b'\x03' , b'\x04']
-    data_auto  = [b'\xfa', b'\x05' , b'\x03' , b'\x03' , b'\x05']
-    data_auto43  = [b'\xfa', b'\x05' , b'\x03' , b'\x02' , b'\x04']
-    data_auto53  = [b'\xfa', b'\x05' , b'\x03' , b'\x01' , b'\x03']
-    data_auto54  = [b'\xfa', b'\x05' , b'\x02' , b'\x01' , b'\x02']
-    data_auto55  = [b'\xfa', b'\x05' , b'\x01' , b'\x01' , b'\x01']
-
-    data_auto11  = [b'\xfa', b'\x05' , b'\x05' , b'\x05' , b'\x09']
-    data_auto52  = [b'\xfa', b'\x05' , b'\x04' , b'\x05' , b'\x08']
-
-    data_rainbow  = [b'\xfa', b'\x01' , b'\x03' , b'\x03' , b'\x01']
-    data_breath  = [b'\xfa', b'\x02' , b'\x03' , b'\x03' , b'\x02']
-    data_cycle  = [b'\xfa', b'\x03' , b'\x03' , b'\x03' , b'\x03']
-
-    data = data_off
-
-    for i in range(0,100):
-        sleep(5)
-        match(i%4):
-            case 0 :
-                logger.info("OFF")
-                data = data_off
-            case 1 :
-                logger.info("Rainbow")
-                data = data_rainbow
-            case 2 :
-                logger.info("Breath")
-                data = data_breath
-            case 3 :
-                logger.info("Cycle")
-                
-                data = data_cycle
-        for d in data:
-            res = s.write(d)    
-            sleep(0.005)
-
-    s.flush()
-    s.close()
 
 # ---------------------------------------------------------------------------
 def connect_device(name):
@@ -202,8 +151,8 @@ def setup_data(operation: LEDOperation , brightness: LEDIntensity , speed : LEDS
         data_packet.append(operation.value.to_bytes(1,"big"))
         data_packet.append(brightness.value.to_bytes(1,"big"))
         data_packet.append(speed.value.to_bytes(1,"big"))
-        crc = (( 0xFA + operation.value+ brightness.value+speed.value )) & 0x0F
-        logger.debug(f"CRC = {crc}")
+        crc =  ( (( 0xFA + operation.value+ brightness.value+speed.value )) & 0xFF )
+        logger.debug(f"CRC = {(crc)}")
         data_packet.append(crc.to_bytes(1,"big"))
         logger.info (f"DATA PACKET {data_packet}")
         return (data_packet)
