@@ -15,6 +15,20 @@ It seems that the default firmware is coded to show time, but the developer did 
 Many thanks to the OP for starting this thread; and time and effort spent in capturing the data paclets.
 
 
+## 07-04-2024 LED control is implemented !!! 
+
+The LED control has been implemented in python using PySerial - did need a few reboots into Windoz to get the CRC right, but I belive it is now fixed and working as expected.
+Please raise an issue if you find a bug, I'll endeavour to replicate and fix the issue.
+
+## XX-04-2024 Next is to implement the TFT screen handler 
+
+## XX-XX-2024 Create a FAST API to control this from endpoint
+
+## XX-XX-2024 Later to dockerise the whole thing
+
+
+
+
 
 
 # Original Text from [[https://github.com/tjaworski](https://github.com/tjaworski/AceMagic-S1-LED-TFT-Linux)](https://github.com/tjaworski/AceMagic-S1-LED-TFT-Linux)
