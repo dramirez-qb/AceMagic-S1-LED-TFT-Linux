@@ -2,8 +2,8 @@
 # Thats an excellent start point for me !! - My rant starts
 
 So I have had this machine for about 6 mmonths, am one of the early adopters. However I was stuck with the same issue, the TFT can only be used in Windows and with the warnings I was  getting in Windows, I was not planning to keep running windows.
-The original purpose of this machine was to work as a home server so that I could run m,y LLM experiments on this, while utilising cloud instances and other powerfull local machines for actual computing needs.
-Once I installed Bodhilinux, I founf myself stuck with clock display and nothing else. Probing the USB devices led to below :
+The original purpose of this machine was to work as a home server so that I could run my LLM experiments on this, while utilising cloud instances and other powerfull local machines for actual computing needs.
+Once I installed Bodhilinux, I found myself stuck with clock display and nothing else. Probing the USB devices led to below :
 
 ![image](https://github.com/venturem/AceMagic-S1-LED-TFT-Linux/assets/13586393/4e2fd070-137e-4bf1-9127-10ffdefecc10)
 
