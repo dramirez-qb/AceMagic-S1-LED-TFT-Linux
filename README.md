@@ -1,7 +1,7 @@
 # VentureM starts his work on this TFT
 # Thats an excellent start point for me !! - My rant starts
 
-So I have had this machine for about 6 mmonths, am one of the early adopters. However I was stuck with the same issue, the TFT can only be used in Windows and with the warnings I was  getting in Windows, I was not planning to keep running windows.
+So I have had this machine for about 6 months, am one of the early adopters. However I was stuck with the same issue, the TFT can only be used in Windows and with the warnings I was  getting in Windows, I was not planning to keep running windows.
 The original purpose of this machine was to work as a home server so that I could run my LLM experiments on this, while utilising cloud instances and other powerfull local machines for actual computing needs.
 Once I installed Bodhilinux, I found myself stuck with clock display and nothing else. Probing the USB devices led to below :
 
@@ -12,7 +12,7 @@ As a result even today (31 March 2024), the TFT still shows time only :)
 
 ## And we have the next issue.
 It seems that the default firmware is coded to show time, but the developer did not bother with intricacies like Daylight Time Savings - so today when UK rolls back time, the clock is one hour behind with no other option but to work on this issue.
-Many thanks to the OP for starting this thread; and time and effort spent in capturing the data paclets.
+Many thanks to the OP for starting this thread; and time and effort spent in capturing the data packets.
 
 
 ## 07-04-2024 LED control is implemented !!! 
