@@ -1,3 +1,15 @@
+# VentureM - Releasing the code for public usage. 
+
+Over the last few weekends I have spent time refining the code so that it can draw a few rudimentary things on the screen.
+Basically, it relies a lot on the Pillow image library for processing the image and then renders on TFT display.
+Note that actual TFT device is quite slow to render and hence I had to implement a block based apprach for rendering,
+This 'dirty rectange' render is much faster, but also suffers from a consequence - rendering variable length text may corrupt the background display.
+
+Please let me know if any help in needed, or any issues observed.
+
+Running this is super simple -  'python lcddsp.py'
+
+
 # VentureM starts his work on this TFT
 # Thats an excellent start point for me !! - My rant starts
 
