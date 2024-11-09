@@ -589,16 +589,16 @@ def class_test(cIsVertical:bool):
     tft.load_image("images/a4.jpg")
     tft.render()
 
-    ob = LCDTime(10,10,fontName="CONTFU.ttf", fontSize=22,textColor=(255,255,0))
+    ob = LCDTime(10,0,fontName="CONTFU.ttf", fontSize=34,textColor=(255,255,0))
     tft.addObject(ob) 
 
-    ob = LCDDate(10,80,fontName="CONTFU.ttf", fontSize=16)
+    ob = LCDDate(0,40,fontName="CONTFU.ttf", fontSize=22)
     tft.addObject(ob) 
 
-    ob = LCDCPUutil(10,120,fontName="CONTFU.ttf", fontSize=26)
+    ob = LCDCPUutil(10,240,fontName="CONTFU.ttf", fontSize=24)
     tft.addObject(ob) 
 
-    ob = LCDCPUfreq(10,160,fontName="CONTFU.ttf", fontSize=26)
+    ob = LCDCPUfreq(10,260,fontName="CONTFU.ttf", fontSize=26)
     tft.addObject(ob) 
 
 
