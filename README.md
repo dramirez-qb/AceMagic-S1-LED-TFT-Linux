@@ -15,6 +15,7 @@ python lcddsp.py
 ```
 ---
 
+If you run into any issues relating to import not working, please run `pip install  -r requirements.txt`
 ===
 
 # VentureM starts his work on this TFT
