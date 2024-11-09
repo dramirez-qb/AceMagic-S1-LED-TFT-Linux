@@ -7,8 +7,15 @@ This 'dirty rectange' render is much faster, but also suffers from a consequence
 
 Please let me know if any help in needed, or any issues observed.
 
-Running this is super simple -  'python lcddsp.py'
+Running this is super simple -  
+---
+```
+cd python
+python lcddsp.py
+```
+---
 
+===
 
 # VentureM starts his work on this TFT
 # Thats an excellent start point for me !! - My rant starts
