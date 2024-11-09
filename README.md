@@ -1,4 +1,4 @@
-# VentureM - Releasing the code for public usage. 
+# VentureM - Releasing the python code for public usage. 
 
 Over the last few weekends I have spent time refining the code so that it can draw a few rudimentary things on the screen.
 Basically, it relies a lot on the Pillow image library for processing the image and then renders on TFT display.
@@ -16,7 +16,8 @@ python lcddsp.py
 ---
 
 If you run into any issues relating to import not working, please run `pip install  -r requirements.txt`
-===
+
+---
 
 # VentureM starts his work on this TFT
 # Thats an excellent start point for me !! - My rant starts
