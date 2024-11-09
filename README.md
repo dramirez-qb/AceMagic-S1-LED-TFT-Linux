@@ -17,7 +17,7 @@ python lcddsp.py
 
 If you run into any issues relating to import not working, please run `pip install  -r requirements.txt`
 
-# Sample Image :
+### Sample Image :
 
 ![savedImage](https://github.com/user-attachments/assets/6525a753-8b72-4869-b617-a3aa89786a78)
 
