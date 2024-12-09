@@ -1,0 +1,54 @@
+---
+name: Build and Push a Docker Image and a Python Package
+on:
+  push:
+    branches:
+      - main
+env:
+  IMAGE_NAME: acemagic-s1-led-tft-linux
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: "checkout@v4"
+      - name: Set up QEMU
+        uses: "setup-qemu-action@v3"
+      - name: Set up Docker Buildx
+        uses: "setup-buildx-action@v3"
+      - name: Set up Python
+        uses: "setup-python@v5"
+        with:
+          python-version: "3.10"
+          cache: pip
+      - name: Build python package
+        run: |
+          python --version ; pip --version  # For debugging
+          pip install virtualenv
+          virtualenv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip twine build pytest httpx pytest-asyncio
+          python -m build
+      - name: Test python package
+        run: |
+          python --version ; pip --version  # For debugging
+          source venv/bin/activate
+          python -m pip install -e .
+          pytest tests
+      - name: Login to Gitea Container Registry
+        uses: "login-action@v3"
+        with:
+          username: "${{ github.repository_owner }}"
+          password: "${{ secrets.REGISTRY_TOKEN }}"
+      - name: Build Docker image
+        uses: "build-push-action@v6"
+        with:
+          context: .
+          push: true
+          tags: |
+            github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME}}:rc-release
+            github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME}}:${{ github.sha }}
+          build-args: |
+            COMMIT_HASH=${{ github.sha }}
+            CREATED="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
